@@ -48,6 +48,7 @@ public class TwinsLock implements Lock {
          * @param reduceCount 允许并发的线程减少数量
          * @return
          */
+        @Override
         public int tryAcquireShared(int reduceCount) {
             for (;;) {// 自旋 & CAS
                 int currentCount = getState();
@@ -63,6 +64,7 @@ public class TwinsLock implements Lock {
          * @param returnCount 释放锁后允许并发访问线程的增加数量
          * @return
          */
+        @Override
         public boolean tryReleaseShared(int returnCount) {
             for(;;) {// 自旋 & CAS
                 int currentCount = getState();
